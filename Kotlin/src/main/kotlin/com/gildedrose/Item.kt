@@ -58,9 +58,37 @@ class AgedBrie(item: Item) : CustomizableItem(item) {
         if (item.sellIn < 0) {
             increaseQuality()
         }
-        
+
         //for chaining
         return this
     }
 
+}
+
+class BackStagePass(item: Item) : CustomizableItem(item) {
+    override fun updateItem(): CustomizableItem {
+        increaseQuality()
+        if (item.sellIn < 11) {
+            increaseQuality()
+        }
+        if (item.sellIn < 6) {
+            increaseQuality()
+        }
+
+        item.sellIn = item.sellIn - 1
+
+        if (item.sellIn < 0) {
+            item.quality = item.quality - item.quality
+        }
+
+        //for chaining
+        return this
+    }
+
+}
+
+class HandOfRagnaros(item: Item) : CustomizableItem(item) {
+    override fun updateItem(): CustomizableItem {
+        return this
+    }
 }
